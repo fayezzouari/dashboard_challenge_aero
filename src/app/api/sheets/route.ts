@@ -1,6 +1,7 @@
 // app/api/sheets/route.ts
 import { google } from 'googleapis';
 import { NextResponse } from 'next/server';
+import { GoogleAuth } from 'google-auth-library';
 
 // Initialize Google Sheets API
 const SHEET_NAME = 'Teams';
@@ -8,11 +9,15 @@ const SHEET_RANGE = `${SHEET_NAME}!A:B`;
 
 // Configure auth
 const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS || '{}');
-const auth = new google.auth.GoogleAuth({
+/*const auth = new google.auth.GoogleAuth({
   credentials,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
-
+*/
+const auth = new GoogleAuth({
+  credentials,
+  scopes: ['https://www.googleapis.com/auth/spreadsheets']
+});
 const spreadsheetId = process.env.SHEET_ID;
 
 // Helper function to get authenticated sheets instance
