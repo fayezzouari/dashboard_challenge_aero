@@ -1,7 +1,7 @@
 // app/api/sheets/route.ts
 import { google } from 'googleapis';
 import { NextResponse } from 'next/server';
-import { GoogleAuth } from 'google-auth-library';
+import { GoogleAuth, JWT } from 'google-auth-library';
 
 // Initialize Google Sheets API
 const SHEET_NAME = 'Teams';
@@ -23,7 +23,7 @@ const spreadsheetId = process.env.SHEET_ID;
 // Helper function to get authenticated sheets instance
 async function getAuthenticatedSheets() {
   const authClient = await auth.getClient();
-  return google.sheets({ version: 'v4', auth: authClient });
+  return google.sheets({ version: 'v4', auth: authClient as JWT });
 }
 
 // Helper function to get all teams
