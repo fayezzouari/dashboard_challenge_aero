@@ -16,7 +16,7 @@ export default function AddProblem() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
 
-  const addProblem = async (e: React.FormEvent) => {
+  const AddProb = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
     setSuccess('')
@@ -47,7 +47,7 @@ export default function AddProblem() {
       } else {
         setError(data.message || 'Failed to add problem')
       }
-    } catch (err) {
+    } catch (err : any) {
       setError('An error occurred while adding the problem')
     }
   }
@@ -59,7 +59,7 @@ export default function AddProblem() {
           <CardTitle className="text-2xl font-bold">Add New Problem</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={addProblem} className="space-y-4">
+          <form onSubmit={AddProb} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Problem Name</Label>
               <Input
