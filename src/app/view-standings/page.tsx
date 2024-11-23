@@ -11,16 +11,28 @@ export default function ViewStandings() {
 
   useEffect(() => {
     fetchTeams()
+
+    // Set up an interval to fetch teams every 10 seconds
+    const interval = setInterval(() => {
+      fetchTeams()
+    }, 10000) // 10 seconds
+
+    // Clear the interval when the component is unmounted
+    return () => clearInterval(interval)
   }, [])
 
   const fetchTeams = async () => {
-    const response = await fetch('/api/sheets', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'getTeams' }),
-    })
-    const data = await response.json()
-    setTeams(data)
+    try {
+      const response = await fetch('/api/sheets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'getTeams' }),
+      })
+      const data = await response.json()
+      setTeams(data)
+    } catch (error) {
+      console.error('Error fetching teams:', error)
+    }
   }
 
   return (

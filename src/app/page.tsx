@@ -25,6 +25,9 @@ export default  async function Home() {
         <Link href="/view-standings">
           <Button className="w-full">View Team Standings</Button>
         </Link>
+        <Link href="/add-problem">
+          <Button className="w-full">Add Problem</Button>
+        </Link>
         <LogoutButton />
       </div>
       
