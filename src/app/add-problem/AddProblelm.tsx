@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -16,7 +16,7 @@ export default function AddProblem() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const addProblem = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
     setSuccess('')
@@ -59,7 +59,7 @@ export default function AddProblem() {
           <CardTitle className="text-2xl font-bold">Add New Problem</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={addProblem} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Problem Name</Label>
               <Input
