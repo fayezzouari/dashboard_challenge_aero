@@ -8,7 +8,7 @@ const SHEET_NAME = 'Teams';
 const SHEET_PROB = 'Problems';
 
 const SHEET_RANGE = `${SHEET_NAME}!A:B`;
-const SHEET_PROB_RANGE = `${SHEET_PROB}!A:B`;
+const SHEET_PROB_RANGE = `${SHEET_PROB}!A:D`;
 
 // Configure auth
 const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS || '{}');
