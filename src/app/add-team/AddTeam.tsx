@@ -9,15 +9,21 @@ import Link from 'next/link'
 
 export default function AddTeam() {
  
+
   const [newTeamName, setNewTeamName] = useState('')
 
   const addTeam = async (e: React.FormEvent) => {
     e.preventDefault()
-    await fetch('/api/sheets', {
+    const res = await fetch('/api/sheets', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'addTeam', teamName: newTeamName }),
     })
+    const data = await res.json()
+    if (!data.success) {
+      alert(data.message || 'Failed to add team')
+      return
+    }
     setNewTeamName('')
     alert('Team added successfully!')
   }

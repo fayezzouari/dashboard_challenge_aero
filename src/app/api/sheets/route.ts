@@ -61,11 +61,11 @@ export async function POST(request: Request) {
     
     // Parse request body
     const body = await request.json();
-    const { action, name, problemName } = body;
+    const { action, teamName, problemName } = body;
 
     switch (action) {
       case 'addTeam': {
-        if (!name?.trim()) {
+        if (!teamName?.trim()) {
           return NextResponse.json(
             { success: false, message: 'Team name is required' },
             { status: 400 }
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
         // Get current teams and check for duplicates
         const teams = await getAllTeams(sheetsInstance);
         const exists = teams.some(
-          (team: any) => team[0]?.toLowerCase() === name.toLowerCase()
+          (team: any) => team[0]?.toLowerCase() === teamName.toLowerCase()
         );
 
         if (exists) {
@@ -91,7 +91,7 @@ export async function POST(request: Request) {
           range: SHEET_RANGE,
           valueInputOption: 'USER_ENTERED',
           requestBody: {
-            values: [[name, 0]],
+            values: [[teamName, 0]],
           },
         });
 
@@ -102,7 +102,7 @@ export async function POST(request: Request) {
       }
 
       case 'updateScore': {
-        if (!name?.trim()) {
+        if (!teamName?.trim()) {
           return NextResponse.json(
             { success: false, message: 'Team name is required' },
             { status: 400 }
@@ -119,7 +119,7 @@ export async function POST(request: Request) {
         // Find team
         const teams = await getAllTeams(sheetsInstance);
         const teamIndex = teams.findIndex(
-          (team: any) => team[0]?.toLowerCase() === name.toLowerCase()
+          (team: any) => team[0]?.toLowerCase() === teamName.toLowerCase()
         );
      
         if (teamIndex === -1) {
