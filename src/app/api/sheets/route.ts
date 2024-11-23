@@ -184,8 +184,8 @@ export async function POST(request: Request) {
         // Get and sort teams
         const teams = await getAllTeams(sheetsInstance);
         const sortedTeams = teams.sort((a: any, b: any) => {
-          const scoreA = Number(a[1]) || 0;
-          const scoreB = Number(b[1]) || 0;
+          const scoreA = parseFloat(a[1]) || 0;
+          const scoreB = parseFloat(b[1]) || 0;
           return scoreB - scoreA;
         });
 
