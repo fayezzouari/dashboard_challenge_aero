@@ -21,36 +21,30 @@ export default function AddProblem() {
     setError('')
     setSuccess('')
 
-    try {
-      const res = await fetch('/api/sheets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'addProb',
-          name,
-          score: parseInt(score),
-          pdfLink,
-          solvers: 0,
-        }),
-      })
+    const res = await fetch('/api/sheets', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        action: 'addProb',
+        name,
+        score: parseInt(score),
+        pdfLink,
+        solvers: 0,
+    }),
+    })
 
-      const data = await res.json()
-      const router = useRouter()
-      if (data.success) {
+    const data = await res.json()
+    if (data.success) {
         setSuccess('Problem added successfully!')
         setName('')
         setScore('')
         setPdfLink('')
-        router.refresh()
-      } else {
+    } else {
         setError(data.message || 'Failed to add problem')
-      }
-    } catch (err : any) {
-      setError('An error occurred while adding the problem')
     }
-  }
+}
 
   return (
     <div className="container mx-auto p-4">
