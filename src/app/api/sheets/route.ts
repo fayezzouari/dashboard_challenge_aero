@@ -30,7 +30,7 @@ async function getAuthenticatedSheets() {
 }
 
 // Helper function to get all teams
-export async function getAllTeams(sheetsInstance: any) {
+async function getAllTeams(sheetsInstance: any) {
   const response = await sheetsInstance.spreadsheets.values.get({
     spreadsheetId,
     range: SHEET_RANGE,
@@ -38,7 +38,7 @@ export async function getAllTeams(sheetsInstance: any) {
   return response.data.values || [];
 }
 
-export async function getAllProbs(sheetsInstance: any) {
+async function getAllProbs(sheetsInstance: any) {
   const response = await sheetsInstance.spreadsheets.values.get({
     spreadsheetId,
     range: SHEET_PROB_RANGE,
