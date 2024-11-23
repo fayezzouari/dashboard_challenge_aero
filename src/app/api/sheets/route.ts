@@ -71,6 +71,7 @@ export async function POST(request: Request) {
             { status: 400 }
           );
         }
+        console.log("pppst");
 
         // Get current teams and check for duplicates
         const teams = await getAllTeams(sheetsInstance);
@@ -84,7 +85,6 @@ export async function POST(request: Request) {
             { status: 409 }
           );
         }
-
         // Add new team
         await sheetsInstance.spreadsheets.values.append({
           spreadsheetId,
@@ -121,7 +121,7 @@ export async function POST(request: Request) {
         const teamIndex = teams.findIndex(
           (team: any) => team[0]?.toLowerCase() === name.toLowerCase()
         );
-
+     
         if (teamIndex === -1) {
           return NextResponse.json(
             { success: false, message: 'Team not found' },
@@ -132,6 +132,10 @@ export async function POST(request: Request) {
         // Find problem and get its score
         const problems = await getAllProbs(sheetsInstance);
         const problem = problems.find(
+          (prob: any) => prob[0]?.toLowerCase() === problemName.toLowerCase()
+        );
+
+        const probIndex = problems.findIndex(
           (prob: any) => prob[0]?.toLowerCase() === problemName.toLowerCase()
         );
 
@@ -146,7 +150,11 @@ export async function POST(request: Request) {
 
         // Update team's score
         const currentScore = parseInt(teams[teamIndex][1]) || 0;
-        const newScore = currentScore + problemScore;
+        let newScore = currentScore + problemScore;
+
+        if (problem[3]==0){
+          newScore = newScore + 0.2*newScore;
+        }
 
         await sheetsInstance.spreadsheets.values.update({
           spreadsheetId,
@@ -154,6 +162,15 @@ export async function POST(request: Request) {
           valueInputOption: 'USER_ENTERED',
           requestBody: {
             values: [[newScore]],
+          },
+        });
+
+        await sheetsInstance.spreadsheets.values.update({
+          spreadsheetId,
+          range: `${SHEET_PROB}!D${probIndex + 1}`,
+          valueInputOption: 'USER_ENTERED',
+          requestBody: {
+            values: [[problem[3]+1]],
           },
         });
 
