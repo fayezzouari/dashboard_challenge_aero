@@ -170,7 +170,7 @@ export async function POST(request: Request) {
           range: `${SHEET_PROB}!D${probIndex + 1}`,
           valueInputOption: 'USER_ENTERED',
           requestBody: {
-            values: [[problem[3]+1]],
+            values: [[parseInt(problem[3])+1]],
           },
         });
 
