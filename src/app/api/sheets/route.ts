@@ -28,8 +28,6 @@ async function getAuthenticatedSheets() {
   const authClient = await auth.getClient();
   return google.sheets({ version: 'v4', auth: authClient as JWT });
 }
-const sheetsInstance = await getAuthenticatedSheets();
-export default sheetsInstance;
 
 // Helper function to get all teams
 export async function getAllTeams(sheetsInstance: any) {
