@@ -153,7 +153,7 @@ export async function POST(request: Request) {
         let newScore = currentScore + problemScore;
 
         if (problem[3]==0){
-          newScore = newScore + 0.2*newScore;
+          newScore = newScore + 0.2*problemScore;
         }
 
         await sheetsInstance.spreadsheets.values.update({
