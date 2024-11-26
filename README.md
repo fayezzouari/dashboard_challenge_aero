@@ -1,3 +1,4 @@
+
 # Aerobotix Birthday Challenge Platform
 
 Welcome to the **Aerobotix Birthday Challenge Platform**, an application developed to host competitive robotics challenges. This platform was used for the **Aerobotix Birthday Challenge**, an 8-hour event that brought together teams to solve a series of problems under a competitive setting. 
@@ -33,23 +34,64 @@ The platform is built using **Next.js** and **shadcn/ui components**, offering a
 
 - **Framework:** [Next.js](https://nextjs.org/)  
 - **UI Components:** [shadcn/ui](https://shadcn.dev/)  
+- **Data Storage:** Google Sheets  
+- **Environment Variables:** `.env.local`  
 - **Deployment:** [Vercel](https://vercel.com/)  
 - **Live Problems Directory:** [View Problems](https://dashboard-challenge-aero.vercel.app/view-problems)  
 
 ---
 
-## Usage Instructions
+## How to Use This Project
 
-### For Participants
-1. **Access the Platform:** Navigate to the provided dashboard link during the competition.  
-2. **Track Your Progress:** Check the **Team Standings Dashboard** for live rankings.  
-3. **Solve Problems:** View problems as they are posted hourly on the **Problems Dashboard**.  
+### Prerequisites
+1. Install [Node.js](https://nodejs.org/) and npm (Node Package Manager).
+2. Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/fayezzouari/aerobotix_challenge_aero.git
+   ```
+3. Navigate to the project directory:
+   ```bash
+   cd aerobotix_challenge_aero
+   ```
 
-### For Administrators
-1. **Login:** Access the admin panel with your credentials to manage the competition.  
-2. **Add Teams:** Use the team management form to register competing teams.  
-3. **Post Problems:** Add new problems via the problems form, ensuring challenges appear at the scheduled time.  
-4. **Update Scores:** As teams solve problems, update their scores on the standings dashboard.
+### Environment Setup
+1. Create a `.env.local` file in the root directory.
+2. Add the following environment variables:
+   ```bash
+   GOOGLE_APPLICATION_CREDENTIALS=path/to/your/google-credentials.json
+   SHEET_ID=your-google-sheet-id
+   ```
+
+### Run the Application
+1. Install the dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+3. Open your browser and navigate to `http://localhost:3000`.
+
+---
+
+### Data Management
+- **Data Storage:**  
+  All data for teams, problems, and scores is stored in and retrieved from a Google Sheet. The sheet is identified using the `SHEET_ID` environment variable.
+- **Google Sheets Integration:**  
+  Ensure that the Google service account JSON file is downloaded and its path is set in the `GOOGLE_APPLICATION_CREDENTIALS` variable.
+
+---
+
+### Project Structure
+
+The core source files are located in the `src/app` directory. Here’s a brief overview:
+- `src/app/dashboard/`: Contains components for the team standings dashboard.
+- `src/app/problems/`: Handles the display and logic for the problems dashboard.
+- `src/app/admin/`: Includes forms and functionality for administrators to manage teams, problems, and scores.
+- `src/app/api/`: Handles server-side logic for interacting with the Google Sheet.
+
+Feel free to explore the directory to understand the implementation in detail.
 
 ---
 
