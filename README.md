@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aerobotix Birthday Challenge Platform
 
-## Getting Started
+Welcome to the **Aerobotix Birthday Challenge Platform**, an application developed to host competitive robotics challenges. This platform was used for the **Aerobotix Birthday Challenge**, an 8-hour event that brought together teams to solve a series of problems under a competitive setting. 
 
-First, run the development server:
+The platform is built using **Next.js** and **shadcn/ui components**, offering a robust and dynamic user experience for both participants and administrators. It remains live, and you can view the problems [here](https://dashboard-challenge-aero.vercel.app/view-problems).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Team's Point of View
+- **Dashboard for Team Standings**  
+  Teams can monitor their ranking in real-time as scores are updated. The standings are sorted by points to highlight the most successful teams.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Problem Dashboard**  
+  Problems are posted incrementally, with a new problem added every hour. Teams can access all available problems directly from their dashboard and strategize accordingly.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### Admin's Point of View
+- **Authentication with Cookie Management**  
+  Admins can securely log in to the platform. Authentication uses cookies stored in the browser for session management.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Admin Features**  
+  Admins have access to forms that enable them to:
+  - Add teams to the competition.
+  - Add new problems that are displayed to participants.
+  - Update team scores as they solve problems.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Technical Overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Framework:** [Next.js](https://nextjs.org/)  
+- **UI Components:** [shadcn/ui](https://shadcn.dev/)  
+- **Deployment:** [Vercel](https://vercel.com/)  
+- **Live Problems Directory:** [View Problems](https://dashboard-challenge-aero.vercel.app/view-problems)  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Usage Instructions
+
+### For Participants
+1. **Access the Platform:** Navigate to the provided dashboard link during the competition.  
+2. **Track Your Progress:** Check the **Team Standings Dashboard** for live rankings.  
+3. **Solve Problems:** View problems as they are posted hourly on the **Problems Dashboard**.  
+
+### For Administrators
+1. **Login:** Access the admin panel with your credentials to manage the competition.  
+2. **Add Teams:** Use the team management form to register competing teams.  
+3. **Post Problems:** Add new problems via the problems form, ensuring challenges appear at the scheduled time.  
+4. **Update Scores:** As teams solve problems, update their scores on the standings dashboard.
+
+---
+
+## Highlights of Aerobotix Birthday Challenge
+
+The competition was an 8-hour intense challenge, fostering innovation and teamwork among participants. The problems designed for the event remain available in the `/view-problems` directory on the platform, serving as a resource for future challenges or practice.
+
+---
+
+## Contribution and Feedback
+
+If you’d like to contribute to this platform or have feedback, feel free to get in touch. Let's continue to innovate and inspire in the robotics community!
+
+---
+
+Thank you for participating or exploring the Aerobotix Birthday Challenge Platform!
